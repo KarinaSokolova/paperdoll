@@ -192,7 +192,7 @@
 */
 
 const DEFS = `<defs>
-  <filter id="sk" x="0%" y="0%" width="100%" height="100%">
+  <filter id="sk" x="-5%" y="-5%" width="110%" height="110%">
     <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="2" seed="2" result="t"/>
     <feDisplacementMap in="SourceGraphic" in2="t" scale="0.3" xChannelSelector="R" yChannelSelector="G"/>
   </filter>
@@ -233,8 +233,11 @@ ${DEFS}
   <path d="M100 200 C98 225 96 265 100 295 C102 310 106 320 108 330 
            L132 330 C134 320 138 310 140 295 C144 265 142 225 140 200 Z" 
         fill="#d4a67a" stroke="#c9956c" stroke-width="1.3"/>
-  <!-- Underwear -->
-  <path d="M106 300 L104 330 L136 330 L134 300 Z" fill="#f2ece4" stroke="#ddd4c8" stroke-width="1"/>
+  <!-- Simple underwear — brown bandeau + shorts -->
+  <!-- Bandeau — covers full torso width, taller -->
+  <path d="M98 222 L96 242 L144 242 L142 222 Z" fill="#8a6a4a" stroke="#7a5a3a" stroke-width="1"/>
+  <!-- Shorts — matches torso width -->
+  <path d="M100 296 L102 330 L120 332 L138 330 L140 296 Z" fill="#8a6a4a" stroke="#7a5a3a" stroke-width="1.2"/>
 
   <!-- ═══ ARMS ═══ -->
   <!-- Left arm -->
@@ -336,15 +339,16 @@ const items = [
   // ──── TOPS ────
   {
     id: 'olive-sweater', cat: 'Tops', label: 'Olive V-Neck',
-    layer: `<g filter="url(#sk)">
-      <!-- Sweater body -->
+    layer: `<g filter="url(#sk)" transform="translate(0,-8)">
       <path d="M98 200 C92 212 78 235 68 265 L76 273 L94 248
                C95 275 97 300 100 325 L140 325 C143 300 145 275 146 248
                L164 273 L172 265 C162 235 148 212 142 200 Z" 
-            fill="#4a5534" stroke="#3a4428" stroke-width="1.6"/>
-      <!-- V-neck skin showing -->
-      <path d="M110 200 L120 228 L130 200" fill="#d4a67a" stroke="#3a4428" stroke-width="1.3"/>
-      <!-- White collar tips visible inside V -->
+            fill="#4a5534" stroke="none"/>
+      <path d="M98 200 C92 212 78 235 68 265 L76 273 L94 248
+               C95 275 97 300 100 325 L140 325 C143 300 145 275 146 248
+               L164 273 L172 265 C162 235 148 212 142 200" 
+            fill="none" stroke="#3a4428" stroke-width="1.6"/>
+      <path d="M110 200 L120 228 L130 200" fill="#d4a67a"/>
       <path d="M113 203 L120 216 L127 203" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
       <path d="M102 240 L138 240" stroke="#3f4a2d" stroke-width="0.6" opacity="0.3"/>
       <path d="M101 256 L139 256" stroke="#3f4a2d" stroke-width="0.6" opacity="0.3"/>
@@ -354,45 +358,47 @@ const items = [
       <path d="M100 318 L140 318" stroke="#3f4a2d" stroke-width="1.2" opacity="0.35"/>
       <path d="M100 322 L140 322" stroke="#3f4a2d" stroke-width="0.8" opacity="0.3"/>
     </g>`,
-    thumb: `<svg viewBox="60 188 125 150" width="78" height="90"><path d="M98 200 C92 212 78 235 68 265 L76 273 L94 248 C95 275 97 300 100 325 L140 325 C143 300 145 275 146 248 L164 273 L172 265 C162 235 148 212 142 200 Z" fill="#4a5534" stroke="#3a4428" stroke-width="1.6"/><path d="M110 200 L120 228 L130 200" fill="#d4a67a" stroke="#3a4428" stroke-width="1.3"/><path d="M113 203 L120 216 L127 203" fill="none" stroke="white" stroke-width="2.2"/></svg>`
+    thumb: `<svg viewBox="60 188 125 150" width="78" height="90"><path d="M98 200 C92 212 78 235 68 265 L76 273 L94 248 C95 275 97 300 100 325 L140 325 C143 300 145 275 146 248 L164 273 L172 265 C162 235 148 212 142 200 Z" fill="#4a5534" stroke="none"/><path d="M113 203 L120 216 L127 203" fill="none" stroke="white" stroke-width="2.2"/></svg>`
   },
   {
     id: 'ami-jacket', cat: 'Outerwear', label: 'AMI Jacket',
-    layer: `<g filter="url(#sk)">
-      <path d="M98 200 C92 214 78 240 66 270 C63 282 62 296 62 310 
-               L72 310 C74 296 78 280 86 262 
-               C88 280 90 298 92 322 L118 322 
-               C117 298 116 275 115 250 L115 200 Z" 
+    layer: `<g filter="url(#sk)" transform="translate(0,-8)">
+      <!-- LEFT PANEL — sleeve follows arm curve but wider -->
+      <path d="M94 200 C86 216 72 244 62 276 C58 288 56 300 56 314 
+               L68 314 C70 300 74 284 82 264 
+               C84 284 86 302 88 325 L118 325 
+               C117 300 116 274 115 248 L115 200 Z" 
             fill="#f0e6d0" stroke="none"/>
-      <path d="M98 200 C92 214 78 240 66 270 C63 282 62 296 62 310 
-               L72 310 C74 296 78 280 86 262 
-               C88 280 90 298 92 322 L118 322 
-               C117 298 116 275 115 250 L115 200" 
+      <path d="M94 200 C86 216 72 244 62 276 C58 288 56 300 56 314 
+               L68 314 C70 300 74 284 82 264 
+               C84 284 86 302 88 325 L118 325 
+               C117 300 116 274 115 248 L115 200" 
             fill="none" stroke="#3a3530" stroke-width="1.6"/>
-      <path d="M98 202 L100 224 L113 218 Z" fill="#ede2cc" stroke="#3a3530" stroke-width="1.1"/>
-      <circle cx="112" cy="255" r="2" fill="#d4c8a8" stroke="#3a3530" stroke-width="0.6"/>
-      <circle cx="112" cy="282" r="2" fill="#d4c8a8" stroke="#3a3530" stroke-width="0.6"/>
-      <path d="M100 278 L114 278" stroke="#d8ccb0" stroke-width="1.2"/>
+      <path d="M94 202 L96 224 L113 218 Z" fill="#ede2cc" stroke="#3a3530" stroke-width="1.1"/>
+      <circle cx="112" cy="258" r="2" fill="#d4c8a8" stroke="#3a3530" stroke-width="0.6"/>
+      <circle cx="112" cy="285" r="2" fill="#d4c8a8" stroke="#3a3530" stroke-width="0.6"/>
+      <path d="M96 280 L114 280" stroke="#d8ccb0" stroke-width="1.2"/>
 
-      <path d="M142 200 C148 214 162 240 174 270 C177 282 178 296 178 310 
-               L168 310 C166 296 162 280 154 262 
-               C152 280 150 298 148 322 L122 322 
-               C123 298 124 275 125 250 L125 200 Z" 
+      <!-- RIGHT PANEL — sleeve follows arm curve but wider -->
+      <path d="M146 200 C154 216 168 244 178 276 C182 288 184 300 184 314 
+               L172 314 C170 300 166 284 158 264 
+               C156 284 154 302 152 325 L122 325 
+               C123 300 124 274 125 248 L125 200 Z" 
             fill="#f0e6d0" stroke="none"/>
-      <path d="M142 200 C148 214 162 240 174 270 C177 282 178 296 178 310 
-               L168 310 C166 296 162 280 154 262 
-               C152 280 150 298 148 322 L122 322 
-               C123 298 124 275 125 250 L125 200" 
+      <path d="M146 200 C154 216 168 244 178 276 C182 288 184 300 184 314 
+               L172 314 C170 300 166 284 158 264 
+               C156 284 154 302 152 325 L122 325 
+               C123 300 124 274 125 248 L125 200" 
             fill="none" stroke="#3a3530" stroke-width="1.6"/>
-      <path d="M142 202 L140 224 L127 218 Z" fill="#ede2cc" stroke="#3a3530" stroke-width="1.1"/>
-      <path d="M130 240 C130 235 134 232 137 235 C140 232 144 235 144 240 C144 247 137 252 137 252 C137 252 130 247 130 240 Z" fill="#cc2222" stroke="#aa1818" stroke-width="1"/>
-      <path d="M126 278 L140 278" stroke="#d8ccb0" stroke-width="1.2"/>
+      <path d="M146 202 L144 224 L127 218 Z" fill="#ede2cc" stroke="#3a3530" stroke-width="1.1"/>
+      <path d="M132 242 C132 237 136 234 139 237 C142 234 146 237 146 242 C146 249 139 254 139 254 C139 254 132 249 132 242 Z" fill="#cc2222" stroke="#aa1818" stroke-width="1"/>
+      <path d="M126 280 L144 280" stroke="#d8ccb0" stroke-width="1.2"/>
     </g>`,
-    thumb: `<svg viewBox="54 192 134 142" width="78" height="85"><path d="M98 200 C92 214 78 240 66 270 C63 282 62 296 62 310 L72 310 C74 296 78 280 86 262 C88 280 90 298 92 322 L118 322 C117 298 116 275 115 250 L115 200 Z" fill="#f0e6d0" stroke="none"/><path d="M142 200 C148 214 162 240 174 270 C177 282 178 296 178 310 L168 310 C166 296 162 280 154 262 C152 280 150 298 148 322 L122 322 C123 298 124 275 125 250 L125 200 Z" fill="#f0e6d0" stroke="none"/><path d="M130 240 C130 235 134 232 137 235 C140 232 144 235 144 240 C144 247 137 252 137 252 C137 252 130 247 130 240 Z" fill="#cc2222"/></svg>`
+    thumb: `<svg viewBox="48 192 146 145" width="82" height="85"><path d="M94 200 C86 216 72 244 62 276 C58 288 56 300 56 314 L68 314 C70 300 74 284 82 264 C84 284 86 302 88 325 L118 325 C117 300 116 274 115 248 L115 200 Z" fill="#f0e6d0" stroke="none"/><path d="M146 200 C154 216 168 244 178 276 C182 288 184 300 184 314 L172 314 C170 300 166 284 158 264 C156 284 154 302 152 325 L122 325 C123 300 124 274 125 248 L125 200 Z" fill="#f0e6d0" stroke="none"/><path d="M132 242 C132 237 136 234 139 237 C142 234 146 237 146 242 C146 249 139 254 139 254 C139 254 132 249 132 242 Z" fill="#cc2222"/></svg>`
   },
   {
     id: 'striped-tee', cat: 'Tops', label: 'Striped Tee',
-    layer: `<g filter="url(#sk)">
+    layer: `<g filter="url(#sk)" transform="translate(0,-8)">
       <path d="M100 200 C96 210 82 230 72 255 L80 263 L96 240
                C97 270 99 298 100 325 L140 325 C141 298 143 270 144 240
                L160 263 L168 255 C158 230 144 210 140 200 Z" 
@@ -412,7 +418,7 @@ const items = [
 
   {
     id: 'blue-shirt', cat: 'Tops', label: 'Blue Button-Down',
-    layer: `<g filter="url(#sk)">
+    layer: `<g filter="url(#sk)" transform="translate(0,-8)">
       <!-- Light blue oversized button-down shirt -->
       <path d="M96 200 C90 212 76 235 66 265 L74 273 L94 245
                C95 275 96 300 98 325 L142 325 C144 300 145 275 146 245
@@ -437,7 +443,7 @@ const items = [
   },
   {
     id: 'black-tee', cat: 'Tops', label: 'Black T-Shirt',
-    layer: `<g filter="url(#sk)">
+    layer: `<g filter="url(#sk)" transform="translate(0,-8)">
       <path d="M100 200 C96 210 82 230 72 255 L80 263 L96 240
                C97 270 99 298 100 325 L140 325 C141 298 143 270 144 240
                L160 263 L168 255 C158 230 144 210 140 200 Z" 
@@ -447,8 +453,26 @@ const items = [
     thumb: `<svg viewBox="64 190 116 148" width="70" height="85"><path d="M100 200 C96 210 82 230 72 255 L80 263 L96 240 C97 270 99 298 100 325 L140 325 C141 298 143 270 144 240 L160 263 L168 255 C158 230 144 210 140 200 Z" fill="#1a1a1a" stroke="#0e0e0e" stroke-width="1.5"/></svg>`
   },
   {
+    id: 'mustard-sweater', cat: 'Tops', label: 'Mustard Sweater',
+    layer: `<g filter="url(#sk)" transform="translate(0,-8)">
+      <path d="M98 200 C92 212 78 235 68 265 L76 273 L94 248
+               C95 275 97 300 100 325 L140 325 C143 300 145 275 146 248
+               L164 273 L172 265 C162 235 148 212 142 200 Z" 
+            fill="#c8982a" stroke="#a87a18" stroke-width="1.6"/>
+      <path d="M106 200 Q120 208 134 200" fill="none" stroke="#b88820" stroke-width="1.2"/>
+      <!-- Openwork knit texture lines -->
+      <path d="M104 222 L136 222" stroke="#b08518" stroke-width="0.7" opacity="0.4" stroke-dasharray="3,3"/>
+      <path d="M103 238 L137 238" stroke="#b08518" stroke-width="0.7" opacity="0.4" stroke-dasharray="3,3"/>
+      <path d="M102 254 L138 254" stroke="#b08518" stroke-width="0.7" opacity="0.4" stroke-dasharray="3,3"/>
+      <path d="M102 270 L138 270" stroke="#b08518" stroke-width="0.7" opacity="0.4" stroke-dasharray="3,3"/>
+      <path d="M103 286 L137 286" stroke="#b08518" stroke-width="0.7" opacity="0.4" stroke-dasharray="3,3"/>
+      <path d="M104 302 L136 302" stroke="#b08518" stroke-width="0.7" opacity="0.4" stroke-dasharray="3,3"/>
+    </g>`,
+    thumb: `<svg viewBox="60 188 125 150" width="78" height="90"><path d="M98 200 C92 212 78 235 68 265 L76 273 L94 248 C95 275 97 300 100 325 L140 325 C143 300 145 275 146 248 L164 273 L172 265 C162 235 148 212 142 200 Z" fill="#c8982a" stroke="#a87a18" stroke-width="1.6"/><path d="M104 222 L136 222" stroke="#b08518" stroke-width="0.7" opacity="0.4" stroke-dasharray="3,3"/><path d="M103 238 L137 238" stroke="#b08518" stroke-width="0.7" opacity="0.4" stroke-dasharray="3,3"/><path d="M102 254 L138 254" stroke="#b08518" stroke-width="0.7" opacity="0.4" stroke-dasharray="3,3"/><path d="M102 270 L138 270" stroke="#b08518" stroke-width="0.7" opacity="0.4" stroke-dasharray="3,3"/></svg>`
+  },
+  {
     id: 'navy-blazer', cat: 'Outerwear', label: 'Navy Blazer',
-    layer: `<g filter="url(#sk)">
+    layer: `<g filter="url(#sk)" transform="translate(0,-8)">
       <!-- LEFT PANEL — sleeve follows arm to y=310, boxy body -->
       <path d="M96 200 C90 214 76 240 64 270 C60 282 58 296 58 310 
                L70 310 C72 298 76 282 84 264 
@@ -483,7 +507,7 @@ const items = [
   },
   {
     id: 'cream-shacket', cat: 'Outerwear', label: 'Cream Jacket',
-    layer: `<g filter="url(#sk)">
+    layer: `<g filter="url(#sk)" transform="translate(0,-8)">
       <!-- LEFT PANEL — puffy sleeve follows arm, body longer + cinched at hem -->
       <!-- Left sleeve: wide/puffy, follows left arm curve to ~y=285 -->
       <path d="M96 200 C88 215 72 242 62 272 C58 284 56 292 56 298 
@@ -556,93 +580,94 @@ const items = [
   {
     id: 'white-trousers', cat: 'Bottoms', label: 'White Trousers',
     layer: `<g filter="url(#sk)">
-      <path d="M100 325 C98 370 96 420 92 470 L88 545 L116 545 L118 470 L120 380 
-               L122 470 L124 545 L152 545 L148 470 C144 420 142 370 140 325 Z" 
+      <path d="M100 305 C99 340 96 400 92 460 L88 545 L116 545 L118 460 L120 360 
+               L122 460 L124 545 L152 545 L148 460 C144 400 141 340 140 305 Z" 
             fill="#f0e8dc" stroke="#3a3530" stroke-width="1.5"/>
-      <path d="M99 322 L141 322 L141 331 L99 331 Z" fill="#e8dfd0" stroke="#3a3530" stroke-width="1.2"/>
-      <path d="M112 334 C110 390 106 450 100 530" stroke="#d8cfc0" stroke-width="1" fill="none" opacity="0.4"/>
-      <path d="M128 334 C130 390 134 450 140 530" stroke="#d8cfc0" stroke-width="1" fill="none" opacity="0.4"/>
-      <path d="M120 331 L120 380" stroke="#ddd4c6" stroke-width="0.7" opacity="0.4"/>
+      <path d="M99 302 L141 302 L141 311 L99 311 Z" fill="#e8dfd0" stroke="#3a3530" stroke-width="1.2"/>
+      <path d="M112 314 C110 380 106 450 100 530" stroke="#d8cfc0" stroke-width="1" fill="none" opacity="0.4"/>
+      <path d="M128 314 C130 380 134 450 140 530" stroke="#d8cfc0" stroke-width="1" fill="none" opacity="0.4"/>
+      <path d="M120 311 L120 360" stroke="#ddd4c6" stroke-width="0.7" opacity="0.4"/>
     </g>`,
-    thumb: `<svg viewBox="82 316 78 240" width="42" height="120"><path d="M100 325 C98 370 96 420 92 470 L88 545 L116 545 L118 470 L120 380 L122 470 L124 545 L152 545 L148 470 C144 420 142 370 140 325 Z" fill="#f0e8dc" stroke="#3a3530" stroke-width="1.5"/><path d="M99 322 L141 322 L141 331 L99 331 Z" fill="#e8dfd0" stroke="#3a3530" stroke-width="1.2"/></svg>`
+    thumb: `<svg viewBox="82 296 78 260" width="42" height="120"><path d="M100 305 C99 340 96 400 92 460 L88 545 L116 545 L118 460 L120 360 L122 460 L124 545 L152 545 L148 460 C144 400 141 340 140 305 Z" fill="#f0e8dc" stroke="#3a3530" stroke-width="1.5"/><path d="M99 302 L141 302 L141 311 L99 311 Z" fill="#e8dfd0" stroke="#3a3530" stroke-width="1.2"/></svg>`
   },
   {
     id: 'saffron-pants', cat: 'Bottoms', label: 'Saffron Wide Pants',
     layer: `<g filter="url(#sk)">
-      <path d="M98 325 C94 370 86 420 80 470 L74 548 L120 548 L120 380 
-               L120 548 L166 548 L160 470 C154 420 146 370 142 325 Z" 
+      <path d="M98 305 C95 350 88 410 80 460 L74 548 L120 548 L120 360 
+               L120 548 L166 548 L160 460 C152 410 145 350 142 305 Z" 
             fill="#d4891a" stroke="#3a3530" stroke-width="1.5"/>
-      <path d="M97 322 L143 322 L143 331 L97 331 Z" fill="#c07a15" stroke="#3a3530" stroke-width="1.2"/>
-      <path d="M106 345 Q100 400 85 485" stroke="#ba7812" stroke-width="1.1" fill="none" opacity="0.3"/>
-      <path d="M134 345 Q140 400 155 485" stroke="#ba7812" stroke-width="1.1" fill="none" opacity="0.3"/>
-      <path d="M106 333 L106 352" stroke="#ba7812" stroke-width="1.2" opacity="0.4"/>
-      <path d="M134 333 L134 352" stroke="#ba7812" stroke-width="1.2" opacity="0.4"/>
+      <path d="M97 302 L143 302 L143 311 L97 311 Z" fill="#c07a15" stroke="#3a3530" stroke-width="1.2"/>
+      <path d="M106 325 Q100 390 85 485" stroke="#ba7812" stroke-width="1.1" fill="none" opacity="0.3"/>
+      <path d="M134 325 Q140 390 155 485" stroke="#ba7812" stroke-width="1.1" fill="none" opacity="0.3"/>
+      <path d="M106 313 L106 332" stroke="#ba7812" stroke-width="1.2" opacity="0.4"/>
+      <path d="M134 313 L134 332" stroke="#ba7812" stroke-width="1.2" opacity="0.4"/>
     </g>`,
-    thumb: `<svg viewBox="68 316 104 244" width="48" height="115"><path d="M98 325 C94 370 86 420 80 470 L74 548 L120 548 L120 380 L120 548 L166 548 L160 470 C154 420 146 370 142 325 Z" fill="#d4891a" stroke="#3a3530" stroke-width="1.5"/><path d="M97 322 L143 322 L143 331 L97 331 Z" fill="#c07a15" stroke="#3a3530" stroke-width="1.2"/></svg>`
+    thumb: `<svg viewBox="68 296 104 264" width="48" height="115"><path d="M98 305 C95 350 88 410 80 460 L74 548 L120 548 L120 360 L120 548 L166 548 L160 460 C152 410 145 350 142 305 Z" fill="#d4891a" stroke="#3a3530" stroke-width="1.5"/><path d="M97 302 L143 302 L143 311 L97 311 Z" fill="#c07a15" stroke="#3a3530" stroke-width="1.2"/></svg>`
   },
   {
     id: 'dark-jeans', cat: 'Bottoms', label: 'Dark Jeans',
     layer: `<g filter="url(#sk)">
-      <path d="M100 325 C98 370 96 420 94 470 L90 545 L118 545 L120 470 L120 380 
-               L120 470 L122 545 L150 545 L146 470 C144 420 142 370 140 325 Z" 
+      <path d="M100 305 C99 340 96 400 94 460 L90 545 L118 545 L120 460 L120 360 
+               L120 460 L122 545 L150 545 L146 460 C144 400 141 340 140 305 Z" 
             fill="#2a3a5a" stroke="#1a2a44" stroke-width="1.5"/>
-      <path d="M99 322 L141 322 L141 332 L99 332 Z" fill="#243250" stroke="#1a2a44" stroke-width="1.2"/>
-      <circle cx="120" cy="327" r="2" fill="#c8b890" stroke="#1a2a44" stroke-width="0.7"/>
-      <path d="M110 335 L106 530" stroke="#4a5a7a" stroke-width="0.7" opacity="0.4" stroke-dasharray="4,3"/>
-      <path d="M130 335 L134 530" stroke="#4a5a7a" stroke-width="0.7" opacity="0.4" stroke-dasharray="4,3"/>
-      <path d="M105 334 C105 346 112 350 118 344" stroke="#4a5a7a" stroke-width="0.9" fill="none" opacity="0.35"/>
-      <path d="M135 334 C135 346 128 350 122 344" stroke="#4a5a7a" stroke-width="0.9" fill="none" opacity="0.35"/>
+      <path d="M99 302 L141 302 L141 312 L99 312 Z" fill="#243250" stroke="#1a2a44" stroke-width="1.2"/>
+      <circle cx="120" cy="307" r="2" fill="#c8b890" stroke="#1a2a44" stroke-width="0.7"/>
+      <path d="M110 315 L106 530" stroke="#4a5a7a" stroke-width="0.7" opacity="0.4" stroke-dasharray="4,3"/>
+      <path d="M130 315 L134 530" stroke="#4a5a7a" stroke-width="0.7" opacity="0.4" stroke-dasharray="4,3"/>
+      <path d="M105 314 C105 326 112 330 118 324" stroke="#4a5a7a" stroke-width="0.9" fill="none" opacity="0.35"/>
+      <path d="M135 314 C135 326 128 330 122 324" stroke="#4a5a7a" stroke-width="0.9" fill="none" opacity="0.35"/>
     </g>`,
-    thumb: `<svg viewBox="84 316 74 240" width="40" height="120"><path d="M100 325 C98 370 96 420 94 470 L90 545 L118 545 L120 470 L120 380 L120 470 L122 545 L150 545 L146 470 C144 420 142 370 140 325 Z" fill="#2a3a5a" stroke="#1a2a44" stroke-width="1.5"/><path d="M99 322 L141 322 L141 332 L99 332 Z" fill="#243250" stroke="#1a2a44" stroke-width="1.2"/></svg>`
+    thumb: `<svg viewBox="84 296 74 260" width="40" height="120"><path d="M100 305 C99 340 96 400 94 460 L90 545 L118 545 L120 460 L120 360 L120 460 L122 545 L150 545 L146 460 C144 400 141 340 140 305 Z" fill="#2a3a5a" stroke="#1a2a44" stroke-width="1.5"/><path d="M99 302 L141 302 L141 312 L99 312 Z" fill="#243250" stroke="#1a2a44" stroke-width="1.2"/></svg>`
   },
   {
     id: 'khaki-chinos', cat: 'Bottoms', label: 'Khaki Chinos',
     layer: `<g filter="url(#sk)">
-      <path d="M102 325 C100 370 98 420 94 470 L90 545 L118 545 L120 470 L120 385 
-               L120 470 L122 545 L150 545 L146 470 C142 420 140 370 138 325 Z" 
+      <path d="M96 305 C94 350 90 410 86 460 L82 538 L114 538 L120 460 L120 365 
+               L120 460 L126 538 L158 538 L154 460 C150 410 146 350 144 305 Z" 
             fill="#d4c8a0" stroke="#3a3530" stroke-width="1.5"/>
-      <path d="M101 322 L139 322 L139 332 L101 332 Z" fill="#c8bc96" stroke="#3a3530" stroke-width="1.2"/>
-      <!-- Belt -->
-      <path d="M101 326 L139 326" stroke="#8a6a3a" stroke-width="2"/>
-      <rect x="118" y="324" width="5" height="5" rx="0.5" fill="#c8a040" stroke="#a08030" stroke-width="0.6"/>
+      <path d="M95 302 L145 302 L145 312 L95 312 Z" fill="#c8bc96" stroke="#3a3530" stroke-width="1.2"/>
+      <!-- Pinces / pleats -->
+      <path d="M106 312 L105 332" stroke="#b8ac86" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M112 312 L111 328" stroke="#b8ac86" stroke-width="0.8" fill="none" opacity="0.4"/>
+      <path d="M128 312 L129 332" stroke="#b8ac86" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M134 312 L135 328" stroke="#b8ac86" stroke-width="0.8" fill="none" opacity="0.4"/>
       <!-- Crease -->
-      <path d="M112 335 L108 530" stroke="#c4b890" stroke-width="0.7" fill="none" opacity="0.35"/>
-      <path d="M128 335 L132 530" stroke="#c4b890" stroke-width="0.7" fill="none" opacity="0.35"/>
+      <path d="M108 335 L100 525" stroke="#c4b890" stroke-width="0.7" fill="none" opacity="0.3"/>
+      <path d="M132 335 L140 525" stroke="#c4b890" stroke-width="0.7" fill="none" opacity="0.3"/>
     </g>`,
-    thumb: `<svg viewBox="84 316 74 240" width="40" height="120"><path d="M102 325 C100 370 98 420 94 470 L90 545 L118 545 L120 470 L120 385 L120 470 L122 545 L150 545 L146 470 C142 420 140 370 138 325 Z" fill="#d4c8a0" stroke="#3a3530" stroke-width="1.5"/><path d="M101 322 L139 322 L139 332 L101 332 Z" fill="#c8bc96" stroke="#3a3530" stroke-width="1.2"/><path d="M101 326 L139 326" stroke="#8a6a3a" stroke-width="2"/></svg>`
+    thumb: `<svg viewBox="76 296 90 254" width="46" height="120"><path d="M96 305 C94 350 90 410 86 460 L82 538 L114 538 L120 460 L120 365 L120 460 L126 538 L158 538 L154 460 C150 410 146 350 144 305 Z" fill="#d4c8a0" stroke="#3a3530" stroke-width="1.5"/><path d="M95 302 L145 302 L145 312 L95 312 Z" fill="#c8bc96" stroke="#3a3530" stroke-width="1.2"/></svg>`
   },
   {
     id: 'coral-trousers', cat: 'Bottoms', label: 'Orange Carrot Pants',
     layer: `<g filter="url(#sk)">
-      <!-- Carrot trousers: wide at hips, taper to ankle, cropped to show ankle -->
-      <!-- Left leg — big hip, tapers but ends at y=518 (ankle visible) -->
-      <path d="M96 325 C86 340 78 365 76 395 C74 420 78 450 86 480 
-               C90 495 94 508 98 518 L114 518 C116 500 118 475 119 455 
-               C120 435 120 410 120 385" 
+      <!-- Left leg — high waisted, big hip, tapers to ankle -->
+      <path d="M96 305 C86 322 78 350 76 382 C74 408 78 442 86 472 
+               C90 487 94 500 98 518 L114 518 C116 492 118 466 119 446 
+               C120 426 120 398 120 370" 
             fill="#e07830" stroke="#3a3530" stroke-width="1.5"/>
       <!-- Right leg -->
-      <path d="M120 385 C120 410 120 435 121 455 
-               C122 475 124 500 126 518 L142 518 
-               C146 508 150 495 154 480 C162 450 166 420 164 395 
-               C162 365 154 340 144 325" 
+      <path d="M120 370 C120 398 120 426 121 446 
+               C122 466 124 492 126 518 L142 518 
+               C146 500 150 487 154 472 C162 442 166 408 164 382 
+               C162 350 154 322 144 305" 
             fill="#e07830" stroke="#3a3530" stroke-width="1.5"/>
       <!-- Fill waist/crotch area -->
-      <rect x="96" y="325" width="48" height="60" fill="#e07830"/>
-      <!-- Waistband -->
-      <path d="M95 322 L145 322 L145 332 L95 332 Z" fill="#d06820" stroke="#3a3530" stroke-width="1.2"/>
+      <rect x="96" y="305" width="48" height="65" fill="#e07830"/>
+      <!-- Waistband — high waisted -->
+      <path d="M95 302 L145 302 L145 312 L95 312 Z" fill="#d06820" stroke="#3a3530" stroke-width="1.2"/>
       <!-- Belt -->
-      <path d="M95 326 L145 326" stroke="#8a6a3a" stroke-width="2"/>
-      <rect x="118" y="324" width="5" height="5" rx="0.5" fill="#c8a040" stroke="#a08030" stroke-width="0.6"/>
+      <path d="M95 306 L145 306" stroke="#8a6a3a" stroke-width="2"/>
+      <rect x="118" y="304" width="5" height="5" rx="0.5" fill="#c8a040" stroke="#a08030" stroke-width="0.6"/>
       <!-- Pleats at waist -->
-      <path d="M106 332 L105 355" stroke="#c86820" stroke-width="1" fill="none" opacity="0.4"/>
-      <path d="M112 332 L111 350" stroke="#c86820" stroke-width="0.7" fill="none" opacity="0.3"/>
-      <path d="M128 332 L129 355" stroke="#c86820" stroke-width="1" fill="none" opacity="0.4"/>
-      <path d="M134 332 L135 350" stroke="#c86820" stroke-width="0.7" fill="none" opacity="0.3"/>
+      <path d="M106 312 L105 338" stroke="#c86820" stroke-width="1" fill="none" opacity="0.4"/>
+      <path d="M112 312 L111 332" stroke="#c86820" stroke-width="0.7" fill="none" opacity="0.3"/>
+      <path d="M128 312 L129 338" stroke="#c86820" stroke-width="1" fill="none" opacity="0.4"/>
+      <path d="M134 312 L135 332" stroke="#c86820" stroke-width="0.7" fill="none" opacity="0.3"/>
       <!-- Fabric drape showing volume at thigh -->
-      <path d="M86 360 Q80 395 80 430" stroke="#c06020" stroke-width="0.9" fill="none" opacity="0.3"/>
-      <path d="M154 360 Q160 395 160 430" stroke="#c06020" stroke-width="0.9" fill="none" opacity="0.3"/>
+      <path d="M86 342 Q80 382 80 420" stroke="#c06020" stroke-width="0.9" fill="none" opacity="0.3"/>
+      <path d="M154 342 Q160 382 160 420" stroke="#c06020" stroke-width="0.9" fill="none" opacity="0.3"/>
     </g>`,
-    thumb: `<svg viewBox="68 316 104 214" width="50" height="110"><path d="M96 325 C86 340 78 365 76 395 C74 420 78 450 86 480 C90 495 94 508 98 518 L114 518 C118 475 120 410 120 385 C120 410 122 475 126 518 L142 518 C146 508 150 495 154 480 C162 450 166 420 164 395 C162 365 154 340 144 325 Z" fill="#e07830" stroke="#3a3530" stroke-width="1.5"/><path d="M95 322 L145 322 L145 332 L95 332 Z" fill="#d06820" stroke="#3a3530" stroke-width="1.2"/><path d="M95 326 L145 326" stroke="#8a6a3a" stroke-width="2"/></svg>`
+    thumb: `<svg viewBox="68 296 104 234" width="50" height="110"><path d="M96 305 C86 322 78 350 76 382 C74 408 78 442 86 472 C90 487 94 500 98 518 L114 518 C118 466 120 398 120 370 C120 398 122 466 126 518 L142 518 C146 500 150 487 154 472 C162 442 166 408 164 382 C162 350 154 322 144 305 Z" fill="#e07830" stroke="#3a3530" stroke-width="1.5"/><path d="M95 302 L145 302 L145 312 L95 312 Z" fill="#d06820" stroke="#3a3530" stroke-width="1.2"/><path d="M95 306 L145 306" stroke="#8a6a3a" stroke-width="2"/></svg>`
   },
 
   // ──── SHOES ────
@@ -755,6 +780,33 @@ const items = [
       <path d="M165 372 L171 372" stroke="#8e1e1e" stroke-width="0.4" opacity="0.5"/>
     </g>`,
     thumb: `<svg viewBox="158 310 60 90" width="46" height="70"><path d="M176 316 C180 332 183 348 184 358" stroke="#8a2020" stroke-width="2.8" fill="none"/><path d="M164 361 C164 358 166 356 170 356 L204 356 C208 356 210 358 210 361 L210 388 C210 391 208 393 204 393 L170 393 C166 393 164 391 164 388 Z" fill="#b42828" stroke="#3a3530" stroke-width="1.4"/><path d="M164 361 L183 376" stroke="#8e1e1e" stroke-width="0.9"/><path d="M210 361 L183 376" stroke="#8e1e1e" stroke-width="0.9"/><path d="M164 390 L183 376" stroke="#8e1e1e" stroke-width="0.9"/><path d="M210 390 L183 376" stroke="#8e1e1e" stroke-width="0.9"/><circle cx="170" cy="356" r="2.5" fill="none" stroke="#c8a040" stroke-width="1.3"/></svg>`
+  },
+  {
+    id: 'black-crossbody', cat: 'Accessories', label: 'Black Crossbody',
+    layer: `<g filter="url(#sk)" transform="translate(0,-15)">
+      <path d="M148 205 C140 235 128 270 110 310 C104 325 96 338 90 348" 
+            stroke="#2a2a2a" stroke-width="9" fill="none"/>
+      <!-- Strap pattern dots -->
+      <circle cx="143" cy="222" r="1.2" fill="#c8a040" opacity="0.6"/>
+      <circle cx="138" cy="242" r="1.2" fill="#c8a040" opacity="0.6"/>
+      <circle cx="132" cy="262" r="1.2" fill="#c8a040" opacity="0.6"/>
+      <circle cx="124" cy="282" r="1.2" fill="#c8a040" opacity="0.6"/>
+      <circle cx="116" cy="300" r="1.2" fill="#c8a040" opacity="0.6"/>
+      <circle cx="108" cy="316" r="1.2" fill="#c8a040" opacity="0.6"/>
+      <!-- Bag body — camera bag shape: wider than tall, at waist/hip -->
+      <path d="M68 340 Q68 336 72 336 L112 336 Q116 336 116 340 L116 358 Q116 362 112 362 L72 362 Q68 362 68 358 Z" 
+            fill="#1a1a1a" stroke="#0a0a0a" stroke-width="1.3"/>
+      <!-- Top zipper line -->
+      <path d="M72 336 L112 336" stroke="#333" stroke-width="1.2"/>
+      <!-- Gold zipper pull -->
+      <circle cx="95" cy="336" r="1.5" fill="#c8a040" stroke="#a08030" stroke-width="0.5"/>
+      <!-- Gold clips at strap attachment -->
+      <circle cx="72" cy="338" r="2" fill="none" stroke="#c8a040" stroke-width="1"/>
+      <circle cx="112" cy="338" r="2" fill="none" stroke="#c8a040" stroke-width="1"/>
+      <!-- Front flap line detail -->
+      <path d="M72 348 L112 348" stroke="#333" stroke-width="0.8" opacity="0.5"/>
+    </g>`,
+    thumb: `<svg viewBox="62 330 62 40" width="58" height="36"><path d="M68 340 Q68 336 72 336 L112 336 Q116 336 116 340 L116 358 Q116 362 112 362 L72 362 Q68 362 68 358 Z" fill="#1a1a1a" stroke="#0a0a0a" stroke-width="1.3"/><path d="M72 336 L112 336" stroke="#333" stroke-width="1.2"/><circle cx="95" cy="336" r="1.5" fill="#c8a040"/></svg>`
   }
 ];
 
@@ -765,9 +817,9 @@ const worn = {};
 
 function render() {
   const canvas = document.getElementById('dollCanvas');
-  // Layer order: shoes first (bottom), then bottoms, tops, outerwear on top of tops, then accessories last
-  const layerOrder = ['Shoes','Bottoms','Tops','Outerwear','Accessories'];
-  const accOrder = ['taupe-scarf','black-sunnies','blue-bag','red-puzzle'];
+  // Layer order: shoes first, then tops, then bottoms over tops, outerwear on top, accessories last
+  const layerOrder = ['Shoes','Tops','Bottoms','Outerwear','Accessories'];
+  const accOrder = ['taupe-scarf','black-sunnies','blue-bag','red-puzzle','black-crossbody'];
 
   let layerHTML = '';
   layerOrder.forEach(cat => {
